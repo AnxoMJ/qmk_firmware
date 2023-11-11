@@ -24,6 +24,7 @@ bool fn_pressed = false; // value if fn key is pressed
 bool mute_pressed = false; // value if mute key is pressed
 bool vol_UP = false;
 bool vol_DOWN = false;
+static void refresh_rgb(void)
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -109,11 +110,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 };
 
+void refresh_rgb() {
+    sleep(1);
+    vol_UP = false
+    vol_DOWN = false
+}
 
 void refresh_matrix(int LED_FLAG) {
     rgb_matrix_set_flags(LED_FLAG);
     rgb_matrix_set_color_all(0, 0, 0);
-
   /* rest of the function code here */
 }
 
