@@ -16,6 +16,8 @@
  */
 
 #include QMK_KEYBOARD_H
+#include <stdio.h>
+#include <unistd.h>
 
 //RGB timeout https://gist.github.com/aashreys/01cb34605a290a7cfb94a856bdabc94c
 
@@ -112,8 +114,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void refresh_rgb() {
     sleep(1);
-    vol_UP = false
-    vol_DOWN = false
+    vol_UP = false;
+    vol_DOWN = false;
 }
 
 void refresh_matrix(int LED_FLAG) {
