@@ -141,21 +141,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     }
                 }
             }
-            rgb_matrix_set_color_all(0, 0, 0);
             return false;
         //case MO(_FN):{ //checks if fn key is pressed
         //    fn_pressed = !(fn_pressed);
+        //    return true;
        // }
         case KC_MUTE:{ //checks if fn key is pressed
             if (record->event.pressed) {
                 mute_pressed = !(mute_pressed);
             }
+            return true;
         }
         case KC_VOLD:{ //checks if fn key is pressed
             vol_DOWN = !(vol_DOWN);
+            return true;
         }
         case KC_VOLU:{ //checks if fn key is pressed
             vol_UP = !(vol_UP);
+            return true;
         }
 
         case LT(0,KC_MUTE):{ //sends colon on tap and semicolon on hold
