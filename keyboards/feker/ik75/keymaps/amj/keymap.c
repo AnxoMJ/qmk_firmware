@@ -147,14 +147,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case MO(_FN):{ //checks if fn key is pressed
-            if (record->event.pressed){
-                fn_pressed = !(fn_pressed);
-            }
+            fn_pressed = !(fn_pressed);
             return true;
         }
         case KC_VOLD:{ //checks if fn key is pressed
             if (record->event.pressed){
                 vol_DOWN = !(vol_DOWN);
+                mute_pressed = false;
                 idle_timer = (record->event.time + IDLE_TIMEOUT_MS) | 1;
             }
             return true;
@@ -162,6 +161,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_VOLU:{ //checks if fn key is pressed
             if (record->event.pressed){
                 vol_UP = !(vol_UP);
+                mute_pressed = false;
                 idle_timer = (record->event.time + IDLE_TIMEOUT_MS) | 1;
             }
             return true;
