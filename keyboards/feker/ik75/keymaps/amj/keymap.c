@@ -167,6 +167,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case LT(0,KC_MUTE):{ //sends colon on tap and semicolon on hold
             if (record->tap.count && record->event.pressed) {
+                mute_pressed = !(mute_pressed);
                 return true; // Return true for normal processing of tap keycode
             } else if (record->event.pressed) {
                 tap_code16(KC_MEDIA_PLAY_PAUSE); // Intercept hold function to send SEMICOLON
@@ -207,16 +208,17 @@ bool rgb_matrix_indicators_user(void) {
         if (host_keyboard_led_state().caps_lock) {
             rgb_matrix_set_color(32, RGB_WHITE);
         }
+        if (mute_pressed){
+            rgb_matrix_set_color(99, RGB_WHITE);
+            rgb_matrix_set_color(100, RGB_WHITE);
+            rgb_matrix_set_color(101, RGB_WHITE);
+        } else {
+            rgb_matrix_set_color(99, 0, 0, 0);
+            rgb_matrix_set_color(100, 0, 0, 0);
+            rgb_matrix_set_color(101, 0, 0, 0);
+        }
     }
-    if (mute_pressed){
-        rgb_matrix_set_color(99, RGB_WHITE);
-        rgb_matrix_set_color(100, RGB_WHITE);
-        rgb_matrix_set_color(101, RGB_WHITE);
-    } else {
-        rgb_matrix_set_color(99, 0, 0, 0);
-        rgb_matrix_set_color(100, 0, 0, 0);
-        rgb_matrix_set_color(101, 0, 0, 0);
-    }
+
     return false;
 }
 
