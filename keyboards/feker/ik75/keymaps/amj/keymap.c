@@ -160,8 +160,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
         }
         case KC_VOLU:{ //checks if fn key is pressed
-            vol_UP = !(vol_UP);
-            idle_timer = (record->event.time + IDLE_TIMEOUT_MS) | 1;
+            if (record->event.pressed){
+                vol_UP = !(vol_UP);
+                idle_timer = (record->event.time + IDLE_TIMEOUT_MS) | 1;
+            }
             return true;
         }
 
@@ -178,8 +180,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	}
     return true;
 }
-
-
 
 
 void matrix_scan_user(void) {
