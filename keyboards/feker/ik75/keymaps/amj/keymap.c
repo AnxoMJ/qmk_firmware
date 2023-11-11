@@ -21,6 +21,9 @@
 
 //RGB timeout https://gist.github.com/aashreys/01cb34605a290a7cfb94a856bdabc94c
 
+#define IDLE_TIMEOUT_MS 5000  // Idle timeout in milliseconds.
+
+static uint16_t idle_timer = 0;
 
 bool fn_pressed = false; // value if fn key is pressed
 bool mute_pressed = false; // value if mute key is pressed
@@ -178,9 +181,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-#define IDLE_TIMEOUT_MS 5000  // Idle timeout in milliseconds.
 
-static uint16_t idle_timer = 0;
 
 void matrix_scan_user(void) {
   if (idle_timer && timer_expired(timer_read(), idle_timer)) {
