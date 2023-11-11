@@ -109,11 +109,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 };
 
-bool refresh_matrix(LED_FLAG) {
+
+void refresh_matrix(int LED_FLAG) {
     rgb_matrix_set_flags(LED_FLAG);
     rgb_matrix_set_color_all(0, 0, 0);
-    return true
-};
+
+  /* rest of the function code here */
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
