@@ -24,7 +24,7 @@ bool fn_pressed = false; // value if fn key is pressed
 bool mute_pressed = false; // value if mute key is pressed
 bool vol_UP = false;
 bool vol_DOWN = false;
-static void refresh_rgb(void)
+static void refresh_rgb(void);
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
