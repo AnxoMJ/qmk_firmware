@@ -146,12 +146,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             fn_pressed = !(fn_pressed);
             return true;
         }
-        case KC_MUTE:{ //checks if fn key is pressed
+/*         case KC_MUTE:{ //checks if fn key is pressed
             if (record->event.pressed) {
                 mute_pressed = !(mute_pressed);
             }
             return true;
-        }
+        } */
         case KC_VOLD:{ //checks if fn key is pressed
             if (record->event.pressed) {
                 vol_DOWN = !(vol_DOWN);
@@ -213,9 +213,9 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(100, RGB_WHITE);
             rgb_matrix_set_color(101, RGB_WHITE);
         } else {
-            rgb_matrix_set_color(99, 0, 0, 0);
-            rgb_matrix_set_color(100, 0, 0, 0);
-            rgb_matrix_set_color(101, 0, 0, 0);
+            //rgb_matrix_set_color(99, 0, 0, 0);
+            //rgb_matrix_set_color(100, 0, 0, 0);
+            //rgb_matrix_set_color(101, 0, 0, 0);
         }
     }
 
