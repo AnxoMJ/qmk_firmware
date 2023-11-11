@@ -112,11 +112,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 };
 
-void refresh_rgb() {
-    sleep(1);
-    vol_UP = false;
-    vol_DOWN = false;
-}
 
 void refresh_matrix(int LED_FLAG) {
     rgb_matrix_set_flags(LED_FLAG);
@@ -158,11 +153,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_VOLD:{ //checks if fn key is pressed
             if (record->event.pressed){
                 vol_DOWN = !(vol_DOWN);
+                idle_timer = (record->event.time + IDLE_TIMEOUT_MS) | 1;
             }
             return true;
         }
         case KC_VOLU:{ //checks if fn key is pressed
             vol_UP = !(vol_UP);
+            idle_timer = (record->event.time + IDLE_TIMEOUT_MS) | 1;
             return true;
         }
 
@@ -178,6 +175,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
 	}
     return true;
+}
+
+
+#define IDLE_TIMEOUT_MS 5000  // Idle timeout in milliseconds.
+
+static uint16_t idle_timer = 0;
+
+void matrix_scan_user(void) {
+  if (idle_timer && timer_expired(timer_read(), idle_timer)) {
+    // If execution reaches here, the keyboard has gone idle.
+    vol_UP = false;
+    vol_DOWN = false;
+    idle_timer = 0;
+  }
 }
 
 
