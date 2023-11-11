@@ -21,7 +21,7 @@
 
 //RGB timeout https://gist.github.com/aashreys/01cb34605a290a7cfb94a856bdabc94c
 
-#define IDLE_TIMEOUT_MS 5000  // Idle timeout in milliseconds.
+#define IDLE_TIMEOUT_MS 100  // Idle timeout in milliseconds.
 
 static uint16_t idle_timer = 0;
 
@@ -213,9 +213,13 @@ bool rgb_matrix_indicators_user(void) {
         }
         if (vol_UP) {
             rgb_matrix_set_color(99, RGB_RED);
+            rgb_matrix_set_color(100, RGB_RED);
+            rgb_matrix_set_color(101, RGB_RED);
         }
         if (vol_DOWN) {
+            rgb_matrix_set_color(99, RGB_BLUE);
             rgb_matrix_set_color(100, RGB_BLUE);
+            rgb_matrix_set_color(101, RGB_BLUE);
         }
         if (host_keyboard_led_state().caps_lock) {
             rgb_matrix_set_color(32, RGB_WHITE);
