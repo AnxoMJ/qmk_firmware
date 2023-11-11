@@ -109,9 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 };
 
-void refresh_matrix(LED_FLAG) {
+bool refresh_matrix(LED_FLAG) {
     rgb_matrix_set_flags(LED_FLAG);
     rgb_matrix_set_color_all(0, 0, 0);
+    return true
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -141,10 +142,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             rgb_matrix_set_color_all(0, 0, 0);
             return false;
         case MO(_FN): //checks if fn key is pressed
-            fn_pressed = not(fn_pressed);
+            fn_pressed = !(fn_pressed);
         case KC_MUTE:{ //checks if fn key is pressed
             if (record->event.pressed) {
-                mute_pressed = not(mute_pressed);
+                mute_pressed = !(mute_pressed);
             }
         }
         case KC_VOLD:{ //checks if fn key is pressed
