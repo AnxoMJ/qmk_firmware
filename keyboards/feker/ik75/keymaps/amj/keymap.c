@@ -146,22 +146,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             fn_pressed = !(fn_pressed);
             return true;
         }
-/*         case KC_MUTE:{ //checks if fn key is pressed
-            if (record->event.pressed) {
-                mute_pressed = !(mute_pressed);
-            }
-            return true;
-        } */
         case KC_VOLD:{ //checks if fn key is pressed
-            if (record->event.pressed) {
-                vol_DOWN = !(vol_DOWN);
-            }
+            vol_DOWN = !(vol_DOWN);
             return true;
         }
         case KC_VOLU:{ //checks if fn key is pressed
-            if (record->event.pressed) {
-                vol_UP = !(vol_UP);
-            }
+            vol_UP = !(vol_UP);
             return true;
         }
 
@@ -200,10 +190,10 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(31, RGB_WHITE);
         }
         if (vol_UP) {
-            rgb_matrix_set_color(101, RGB_RED);
+            rgb_matrix_set_color(99, RGB_RED);
         }
         if (vol_DOWN) {
-            rgb_matrix_set_color(100, RGB_GREEN);
+            rgb_matrix_set_color(100, RGB_BLUE);
         }
         if (host_keyboard_led_state().caps_lock) {
             rgb_matrix_set_color(32, RGB_WHITE);
@@ -212,10 +202,6 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(99, RGB_WHITE);
             rgb_matrix_set_color(100, RGB_WHITE);
             rgb_matrix_set_color(101, RGB_WHITE);
-        } else {
-            //rgb_matrix_set_color(99, 0, 0, 0);
-            //rgb_matrix_set_color(100, 0, 0, 0);
-            //rgb_matrix_set_color(101, 0, 0, 0);
         }
     }
 
