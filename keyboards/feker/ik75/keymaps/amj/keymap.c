@@ -30,7 +30,7 @@
  * Play/Pause is sent immediately when this threshold is reached.
  * The firmware does not wait for the key to be released.
  */
-#define MUTE_PLAY_HOLD_MS 300
+#define MUTE_PLAY_HOLD_MS 200
 
 /*
  * RGB Matrix LED indexes.
